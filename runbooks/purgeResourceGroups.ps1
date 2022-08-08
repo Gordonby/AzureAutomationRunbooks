@@ -5,16 +5,16 @@
 #Authenticate as the Automation Account Managed Identity to the Azure Control Plane
 try
 {
-    Disable-AzContextAutosave -Scope Process
+	Disable-AzContextAutosave -Scope Process
     
-	  #System Managed Identity
-	  $AzureContext = (Connect-AzAccount -Identity).context
-    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
+	#System Managed Identity
+	$AzureContext = (Connect-AzAccount -Identity).context
+	$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 
-	  #User Managed Identity
-	  #$uaiClientId=""
-	  #$AzureContext = (Connect-AzAccount -Identity -AccountId $uaiClientId).context
-	  #$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
+	#User Managed Identity
+	#$uaiClientId=""
+	#$AzureContext = (Connect-AzAccount -Identity -AccountId $uaiClientId).context
+	#$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 }
 catch {
     Write-Error -Message $_.Exception
